@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{workers/base::Layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container py-5">
+			<!-- For demo purpose -->
+			<header class="text-white text-center">
+				<h1 class="display-4">Upload Images</h1>
+				<p class="lead mb-0">upload your total work images to show
+					people</p>
+				<br> <img
+					src="https://bootstrapious.com/i/snippets/sn-img-upload/image.svg"
+					alt="" width="150" class="mb-4">
+			</header>
+
+
+			<div class="row py-4">
+				<form action="#"
+				th:object="${workerImage}"
+				enctype="multipart/form-data"
+				method="post"
+				th:action="@{/worker/save-image}">
+					<div class="col-lg-6 mx-auto">
+
+					<input type="hidden" th:value="${worker.id}" />
+						<!-- Upload image input-->
+						<div
+							class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+							<input id="upload" type="file" name="workimage" onchange="readURL(this);"
+								class="form-control border-0"> <label id="upload-label"
+								for="upload" class="font-weight-light text-muted">Choose
+								file</label>
+							<div class="input-group-append">
+								<label for="upload" class="btn btn-light m-0 rounded-pill px-4">
+									<i class="fa fa-cloud-upload mr-2 text-muted"></i><small
+									class="text-uppercase font-weight-bold text-muted">
+										Choose file</small>
+								</label>
+							</div>
+						</div>
+
+						<!-- Uploaded image area-->
+						<p class="font-italic text-white text-center">The image
+							uploaded will be rendered inside the box below.</p>
+						<div class="image-area mt-4">
+							<img id="imageResult" src="#" alt=""
+								class="img-fluid rounded shadow-sm mx-auto d-block">
+						</div>
+
+						<div class="mt-3 text-center">
+							<button type="submit" class="btn btn-outline-light">Upload
+								Image</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

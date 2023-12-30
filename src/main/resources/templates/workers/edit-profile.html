@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{workers/base::Layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="card">
+			<h5 class="card-header text-center">Edit Your Profile</h5>
+			<form action="#" th:object="${worker}" enctype="multipart/form-data"
+				method="POST" th:action="@{/worker/update-worker}">
+				<div class="card-body">
+
+					<div class="row">
+						<input type="hidden" th:value="${worker.id}" />
+						<div class="col-md-6 mt-1">
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-user"></i></span> <input type="text"
+									class="form-control" th:value="${worker.firstName}"
+									name="firstName" placeholder="First Name" aria-label="Username"
+									aria-describedby="addon-wrapping">
+							</div>
+							<div class="input-group flex-nowrap mt-2">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-user"></i></span> <input type="text"
+									class="form-control" th:value="${worker.lastName}"
+									name="lastName" placeholder="Last Name" aria-label="Username"
+									aria-describedby="addon-wrapping">
+							</div>
+							<div class="input-group flex-nowrap mt-2">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-envelope"></i></span> <input type="text"
+									class="form-control" th:value="${worker.email}" name="email"
+									placeholder="Email" aria-label="Username"
+									aria-describedby="addon-wrapping">
+							</div>
+
+							<div class="input-group flex-nowrap mt-2">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-phone"></i></span> <input type="text"
+									class="form-control" th:value="${worker.phone}" name="phone"
+									placeholder="Phone" aria-label="Username"
+									aria-describedby="addon-wrapping">
+							</div>
+
+							<div class="input-group mt-2">
+								<label class="input-group-text" for="inputGroupFile01">Profile
+									Image</label> <input type="file" name="profileImage"
+									class="form-control" id="inputGroupFile01">
+							</div>
+
+
+						</div>
+						<div class="col-md-6 mt-1">
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-helmet-safety"></i></span> <input type="text"
+									class="form-control" name="workType"
+									th:value="${worker.workType}"
+									placeholder="Work Type (like electrician,constructor,plumber etc...)"
+									aria-label="Username" aria-describedby="addon-wrapping">
+							</div>
+
+							<div class="input-group flex-nowrap mt-2">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-business-time"></i></span> <input type="text"
+									class="form-control" th:value="${worker.workExpe}"
+									name="workExpe" placeholder="Work Experiance in year)"
+									aria-label="Username" aria-describedby="addon-wrapping">
+							</div>
+
+							<div class="input-group flex-nowrap mt-2">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-earth-americas"></i></span> <select
+									class="form-control" id="country" name="country"
+									onchange="fetchStates()">
+									<option value="">Select Country</option>
+									<option th:each="country : ${countries}"
+										th:value="${country.id}" th:text="${country.countryName}"></option>
+								</select>
+							</div>
+
+							<div class="input-group flex-nowrap mt-2">
+								<span class="input-group-text" id="addon-wrapping"> <i
+									class="fa-solid fa-location-crosshairs"></i>
+								</span> <select class="form-control" id="state" name="state"
+									onchange="fetchDistrics()">
+									<option value="">Select State</option>
+								</select>
+							</div>
+
+							<div class="input-group flex-nowrap mt-2">
+								<span class="input-group-text" id="addon-wrapping"><i
+									class="fa-solid fa-location-dot"></i></span> <select
+									class="form-control" id="distric" name="distric">
+									<option value="">Select Districs</option>
+								</select>
+							</div>
+
+							<div class="form-floating mt-2">
+								<textarea class="form-control" th:text="${worker.discription}"
+									name="discription" placeholder="Leave a comment here"
+									id="floatingTextarea2" style="height: 100px"></textarea>
+								<label for="floatingTextarea2">Something About Your Self</label>
+							</div>
+						</div>
+					</div>
+					<div class="text-center mt-3">
+						<button type="submit" class="btn btn-outline-success">Update
+							Your Profile</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

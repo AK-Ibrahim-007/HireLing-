@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="Layout(content)">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="${title}"></title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" th:href="@{/css/profile.css}" />
+<link rel="stylesheet" th:href="@{/css/imageupload.css}" />
+<link rel="stylesheet" th:href="@{/css/gallery.css}" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary bg-dark"
+		data-bs-theme="dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Hireling</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#"> <img
+							th:src="@{'/img/'+${worker.imageUrl}}" alt="Logo" width="30"
+							height="24" class="d-inline-block align-text-top  worker-image">
+							<span th:text="${worker.firstName}"></span> <span
+							th:text="${worker.lastName}"></span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"
+						th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Vertical navbar -->
+	<div class="vertical-nav bg-white mt-5" id="sidebar">
+		<div class="py-4 px-3 mb-4 bg-light">
+			<div class="media d-flex align-items-center">
+				<img th:src="@{'/img/'+${worker.imageUrl}}" alt="..." width="65"
+					class="mr-3 img-thumbnail  shadow-sm worker-image">
+				<div class="media-body">
+					<h4 class="m-0">
+						&nbsp;&nbsp;<span th:text="${worker.firstName}"></span>
+					</h4>
+					<p class="font-weight-light text-muted mb-0">&nbsp;&nbsp; Web
+						developer</p>
+				</div>
+			</div>
+		</div>
+
+		<p
+			class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+		<ul class="nav flex-column bg-white mb-0">
+			<li class="nav-item"><a href="/worker/profile"
+				class="nav-link text-dark font-italic bg-light"> <i
+					class="fa-solid fa-house-user text-primary"></i> Home
+			</a></li>
+			<li class="nav-item ms-3"><form
+					th:action="@{'/worker/edit-profile/'+${worker.id}}" method="Post">
+					<i class="fa-solid fa-user-pen text-primary "></i>
+					<button type="submit" style="border: none; background: none;">
+						Edit Profile</button>
+				</form></li>
+			<li class="nav-item"><a href="/worker/upload-Images"
+				class="nav-link text-dark font-italic"><i
+					class="fa-solid fa-upload text-primary"></i> Upload Work Images </a></li>
+			<li class="nav-item"><a href="/worker/gallery"
+				class="nav-link text-dark font-italic"><i
+					class="fa-brands fa-envira text-primary"></i> Gallery </a></li>
+			<li class="nav-item"><a th:href="@{/logout}"
+				class="nav-link text-dark font-italic"> <i
+					class="fa-solid fa-right-from-bracket text-primary"></i> Logout
+			</a></li>
+		</ul>
+
+	</div>
+	<!-- End vertical navbar -->
+
+
+	<!-- Page content holder -->
+
+	<div class="page-content p-5 mt-5" id="content">
+		<!-- Toggle button -->
+		<button id="sidebarCollapse" type="button"
+			class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
+			<i class="fa-solid fa-bars"></i>
+			<!-- <small
+				class="text-uppercase font-weight-bold">Toggle</small> -->
+		</button>
+		<!-- message box -->
+		<div th:if="${session.message}" class="container text-center">
+			<div th:classappend="${'alert-'+session.message.type}" class="alert"
+				role="alert">
+				<span th:text="${session.message.content}"></span>
+			</div>
+			<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+		</div>
+		<div th:replace="${content}"></div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/script.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</body>
+</html>

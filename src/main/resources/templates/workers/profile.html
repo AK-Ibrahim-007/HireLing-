@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{workers/base::Layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<!-- Demo content -->
+		<img th:src="@{'/img/'+${worker.imageUrl}}" alt="Logo" width="80"
+			height="80" class="d-inline-block align-text-top img-thumbnail worker-image">
+		<h2 class="display-4 text-white">
+			<span th:text="${worker.firstName}"></span> <span
+				th:text="${worker.lastName}"></span>
+		</h2>
+		 <p class="lead text-white mb-0 ms-1">
+			<span><i class="fa-solid fa-earth-americas"></i></span> <span
+				th:text="${worker.countryWorker?.countryName} ?: 'N/A'"></span>
+		</p>
+		<div class="separator"></div>
+		<div class="row text-white">
+			<div class="col-lg-6">
+
+				<h6 class="lead">
+					Email : <span th:text="${worker.email}"></span>
+				</h6>
+				<br>
+				<h6 class="lead">
+					Phone : <span th:text="${worker.phone}"></span>
+				</h6><br />
+				<h6 class="lead">
+					State : <span th:text="${worker.state?.stateName} ?: 'N/A'"></span>
+				</h6><br />
+				<h6 class="lead">Work Description : <span th:text="${worker.discription}"></span></h6><br />
+				
+
+				
+			</div>
+			<div class="col-lg-6">
+				<h6 class="lead">WorkType : <span th:text="${worker.workType}"></span></h6><br />
+				
+				<h6 class="lead">Work Experience : <span th:text="${worker.workExpe}"></span></h6><br />
+				<h6 class="lead">Distric : <span th:text="${worker.distric?.districName} ?: 'N/A'"></span></h6><br />
+				
+		</div>
+		</div>
+		<!-- End demo content -->
+	</section>
+</body>
+</html>

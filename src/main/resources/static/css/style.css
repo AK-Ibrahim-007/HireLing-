@@ -1,0 +1,101 @@
+@charset "ISO-8859-1";
+
+/* Start styling of home page */
+.bg-img {
+	/* The image used */
+	background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),
+		url("../img/light-bulbs-g.jpg");
+	min-height: 98vh;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* Needed to position the navbar */
+	position: relative;
+}
+
+.home_services {
+	margin-top: 160px;
+	font-weight: lighter;
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	color: #ed8c0f !important;
+}
+
+.banner1 {
+	background-color: #ededed;
+	padding: 5px;
+	font-size: 13px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.img1 {
+	padding: 20px;
+}
+
+.img1:hover {
+	padding: 20px;
+	background: #FAFAFA;
+	border-radius: 2px;
+}
+
+/* End styling of home page */
+
+/* start banner-section2 styling */
+.row>.column {
+	padding: 0 5px;
+	padding-top: 50px;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.column {
+	float:left;
+	width: 22%;
+	height:250px;
+	
+	margin-left: 25px;
+}
+
+.cursor {
+	cursor: pointer;
+}
+
+
+
+img.hover-shadow {
+	transition: 0.3s;
+	
+}
+
+.hover-shadow:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	-ms-transform: scale(1.1); /* IE 9 */
+	-webkit-transform: scale(1.1); /* Safari 3-8 */
+	transform: scale(1.1);
+}
+/* End of banner-section2 styling */
+
+/* Start styling of header */
+.navbar {
+	background: transparent !important;
+}
+
+.navbar-text, .navbar-brand, .nav-link {
+	color: #ed8c0f !important;
+	font-weight: lighter;
+	font-size: large;
+}
+
+/* End Styling of header */

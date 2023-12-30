@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${title}">Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/registration.css}" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container register">
+
+		<div class="row">
+
+			<div class="col-md-3 register-left">
+				<img th:src="@{/img/rocket.png}" alt="" />
+				<h3>Welcome</h3>
+				<p>You are 30 seconds away from earning your own money!</p>
+				<a role="button" href="/signin" class="btn btn-light">Login</a><br />
+				<br /> <a href="/" style="color: white; text-decoration: none;">Go
+					TO Home</a>
+			</div>
+			<div class="col-md-9 register-right">
+				<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+					<li class="nav-item"><a class="nav-link active" id="home-tab"
+						data-toggle="tab" href="#home" role="tab" aria-controls="home"
+						aria-selected="true">Workers</a></li>
+					<li class="nav-item"><a class="nav-link" id="profile-tab"
+						data-toggle="tab" href="#profile" role="tab"
+						aria-controls="profile" aria-selected="false">Hirer</a></li>
+				</ul>
+
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="home" role="tabpanel"
+						aria-labelledby="home-tab">
+
+						<h3 class="register-heading">Apply as a Worker</h3>
+
+						<form novalidate th:action="@{/further_register}" method="post"
+							th:object="${worker}">
+
+							<div class="row register-form">
+								<div th:if="${session.message}"
+									th:classappend="${session.message.type}" class="alert"
+									role="alert">
+									<span th:text="${session.message.content}"></span>
+									<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="text" name="firstName" class="form-control"
+											th:classappend="${#fields.hasErrors('firstName') ? 'is-invalid':''}"
+											placeholder="First Name *" th:value="${worker.firstName}"
+											required="required" />
+										<div class="invalid-feedback"
+											th:each="e : ${#fields.errors('firstName')}" th:text="${e}">
+										</div>
+									</div>
+									<br>
+									<div class="form-group">
+										<input type="email" name="email" class="form-control"
+											th:classappend="${#fields.hasErrors('email') ? 'is-invalid':''}"
+											placeholder="Your Email *" th:value="${worker.email}"
+											required="required" />
+										<div class="invalid-feedback"
+											th:each="e : ${#fields.errors('email')}" th:text="${e}">
+										</div>
+									</div>
+									<br>
+									<div class="form-group">
+										<input type="password" id="Password" name="password"
+											class="form-control"
+											th:classappend="${#fields.hasErrors('password') ? 'is-invalid':''}"
+											placeholder="Password *" th:value="${worker.password}"
+											required="required" />
+										<div class="invalid-feedback"
+											th:each="e : ${#fields.errors('password')}" th:text="${e}">
+										</div>
+									</div>
+									<br>
+
+									<div class="form-group">
+										<div class="maxl">
+											<label class="radio inline"> <input type="radio"
+												name="gender" value="male" checked> <span>
+													Male </span>
+											</label> <label class="radio inline"> <input type="radio"
+												name="gender" value="female"> <span>Female </span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="text" name="lastName" class="form-control"
+											th:classappend="${#fields.hasErrors('lastName') ? 'is-invalid':''}"
+											placeholder="Last Name *" th:value="${worker.lastName}"
+											required="required" />
+										<div class="invalid-feedback"
+											th:each="e : ${#fields.errors('lastName')}" th:text="${e}">
+										</div>
+									</div>
+									<br>
+									<div class="form-group">
+										<input type="number" minlength="10" maxlength="10"
+											name="phone"
+											th:classappend="${#fields.hasErrors('phone') ? 'is-invalid':''}"
+											class="form-control" th:value="${worker.phone}"
+											placeholder="Your Phone *" />
+										<div class="invalid-feedback"
+											th:each="e : ${#fields.errors('phone')}" th:text="${e}">
+										</div>
+									</div>
+									<br>
+									<div class="form-group">
+										<input type="password" class="form-control"
+											placeholder="Confirm Password *" id="ConfirmPassword"
+											name="confirmPassword" required />
+									</div>
+									<div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
+									<br>
+									<div class="mb-3 form-check">
+										<input type="checkbox" class="form-check-input" id="agreement"
+											name="agreement"> <label class="form-check-label"
+											for="exampleCheck1">Accept Term and condition</label>
+									</div>
+
+									<button type="submit" class="btn btn-warning btnRegister">Register</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+
+					<div class="tab-pane fade show" id="profile" role="tabpanel"
+						aria-labelledby="profile-tab">
+						<h3 class="register-heading">Apply as a Hirer</h3>
+						<div class="row register-form">
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control"
+										placeholder="First Name *" value="" />
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control"
+										placeholder="Last Name *" value="" />
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" placeholder="Email *"
+										value="" />
+								</div>
+								<div class="form-group">
+									<input type="text" maxlength="10" minlength="10"
+										class="form-control" placeholder="Phone *" value="" />
+								</div>
+
+
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="password" class="form-control"
+										placeholder="Password *" value="" />
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control"
+										placeholder="Confirm Password *" value="" />
+								</div>
+								<div class="form-group">
+									<select class="form-control">
+										<option class="hidden" selected disabled>Please
+											select your Sequrity Question</option>
+										<option>What is your Birthdate?</option>
+										<option>What is Your old Phone Number</option>
+										<option>What is your Pet Name?</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="`Answer *"
+										value="" />
+								</div>
+								<input type="submit" class="btnRegister" value="Register" />
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(
+				function() {
+					$("#ConfirmPassword").on(
+							'keyup',
+							function() {
+								var password = $("#Password").val();
+								var confirmPassword = $("#ConfirmPassword")
+										.val();
+								if (password != confirmPassword)
+									$("#CheckPasswordMatch").html(
+											"Password does not match !").css(
+											"color", "red");
+								else
+									$("#CheckPasswordMatch").html(
+											"Password match !").css("color",
+											"green");
+							});
+				});
+	</script>
+</body>
+</html>

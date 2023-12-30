@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="container-fluid  mt-4 mb-4 text-center"
+		th:fragment="banner3" style="background-color: #ededed;">
+		<div class="text-center">
+			<h1 class="pt-2">Cleaning & Pest Control</h1>
+		</div>
+		<div class="container text-center mt-5">
+			<div class="row align-items-center">
+				<div class="col">
+
+					<img th:src="@{/img/home-cleaning.jpg}" style="width: 230px; border-radius: 2%"
+						class="hover-shadow cursor  img-fluid"><br><br>
+					<p>Full Home Cleaning</p>
+
+				</div>
+				<div class="col">
+					<img th:src="@{/img/pest-control.jpg}"
+						style="width: 250px; border-radius: 2%"
+						class="hover-shadow  cursor img-fluid"><br><br>
+						<p>General Pest Control</p>
+				</div>
+				<div class="col">
+					<img th:src="@{/img/kitchen.jpg}" style="width: 230px;border-radius: 2%"
+						class="hover-shadow  cursor img-fluid"><br><br>
+						<p>Bathroom & Kitchen Cleaning</p>
+				</div>
+				<div class="col">
+					<img th:src="@{/img/sofa-cleaning.jpg}" style="width: 230px;border-radius: 2%"
+						class="hover-shadow  cursor img-fluid"><br><br>
+						<p>Sofa & Carpet Cleaning</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

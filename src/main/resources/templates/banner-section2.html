@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container-fluid banner2 mt-4 mb-4 text-center"
+		th:fragment="banner2">
+
+
+		<div class="row">
+			<div class="column">
+				<img th:src="@{/img/waxing.jpg}" style="width: 100%"
+					 class="hover-shadow cursor img-thumbnail img-fluid">
+			</div>
+			<div class="column">
+				<img th:src="@{/img/bathroom.jpg}" style="width: 100%"
+					 class="hover-shadow img-thumbnail cursor img-fluid">
+			</div>
+			<div class="column">
+				<img th:src="@{/img/haircut.jpg}" style="width: 100%"
+					 class="hover-shadow img-thumbnail cursor img-fluid">
+			</div>
+			<div class="column">
+				<img th:src="@{/img/spa.jpg}" style="width: 100%"
+					 class="hover-shadow img-thumbnail cursor img-fluid">
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

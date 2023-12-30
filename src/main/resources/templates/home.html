@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::Layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<section>
+		<div class="bg-img">
+			<div class="container-fluid">
+				<div th:replace="~{header::header1}"></div>
+				<div class="container text-center text-white">
+					<h1 class="home_services">Home Services, On demand</h1>
+				</div>
+				<div class="container text-white">
+					<div class="row">
+						<div class="col-md-6 mt-2 ">
+							<select class="form-select ms-auto" style="width: 300px;"
+								aria-label="Default select example">
+								<option selected>Open this select menu</option>
+								<option value="1">India</option>
+								<option value="2">United State</option>
+								<option value="3">Australia</option>
+							</select>
+						</div>
+						<div class="col-md-6 mt-2">
+							<div class="input-group mb-3 " style="width: 400px;">
+								<button class="input-group-text" id="inputGroup-sizing-default">
+									<img th:src="@{/img/search-icon.png}" alt="" width="20px;" />
+								</button>
+								<input type="search" class="form-control"
+									aria-label="Sizing example input"
+									aria-describedby="inputGroup-sizing-default">
+							</div>
+							<p>
+								<a href="">Contractor</a>&nbsp;&nbsp;<a href="">Home
+									painting</a>&nbsp;&nbsp;<a href="">Plumbers</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+      <div th:replace="~{banner-section1::banner1}"></div>
+      <div th:replace="~{banner-section2::banner2}"></div>
+	  <div th:replace="~{banner-section3::banner3}"></div>	
+	  <div th:replace="~{footer::footer1}"></div>	
+	</section>
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+</html>

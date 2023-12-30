@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{workers/base::Layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="text-center text-white">
+			<h1>Works Images</h1>
+		</div>
+		<!-- Gallery -->
+		<div class="row">
+			<div class="col-lg-4 col-md-12 mb-4 mb-lg-0"
+				th:each="imageName : ${imageNames}">
+					<img
+					class="myImg w-100 shadow-1-strong rounded mb-4 img-thumbnail img-responsive"
+					th:src="'/img/'+${imageName}" style="width: 100%; max-width: 300px">
+			</div>
+
+		</div>
+		<!-- Gallery -->
+		<!-- The Modal -->
+		<div class="modal mt-5">
+			<span class="close">&times;</span> <img class="modal-content"
+				id="img01">
+			<div id="caption"></div>
+		</div>
+		<script>
+			// Get all the images with class "myImg"
+			var images = document.getElementsByClassName("myImg");
+
+			// Get the modal
+			var modal = document.querySelector(".modal");
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+
+			// Loop through each image and assign click event listener
+			for (var i = 0; i < images.length; i++) {
+				images[i].onclick = function() {
+					modal.style.display = "block";
+					modalImg.src = this.src;
+					captionText.innerHTML = this.alt;
+				}
+			}
+
+			// Get the <span> element that closes the modal
+			var span = document.querySelector(".close");
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+		</script>
+	</section>
+</body>
+</html>
